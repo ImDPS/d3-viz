@@ -1,9 +1,13 @@
 import React from 'react'
 
 export const MouseOver = () => {
+
+    const handleMouseMove = () => {
+        console.log('mouse move')
+    }
     
     return (
-        <svg width={60} height={60} onMouseMove={onMouseMove}>
+        <svg width={60} height={60} onMouseMove={handleMouseMove}>
             <circle
                 cx={30}
                 cy={30}
