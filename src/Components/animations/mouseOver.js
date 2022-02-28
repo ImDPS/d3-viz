@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 
 export const MouseOver = () => {
 
-    const handleMouseMove = () => {
-        console.log('mouse move')
+    const width = 960;
+    const height = 500;
+
+    const initialMousePosition = {
+        x: width/2,
+        y: height/2
     }
-    
+
+    const [mousePosition, setMousePosition] = useState(initialMousePosition);
+
+    const handleMouseMove = useCallback(
+        (event) => {
+            setMousePosition({
+                x: event.clientX,
+                y: event.clientY
+            });
+        },
+        [setMousePosition]
+    );
+
     return (
-        <svg width={60} height={60} onMouseMove={handleMouseMove}>
+        <svg width={width} height={height} onMouseMove={handleMouseMove}>
             <circle
-                cx={30}
-                cy={30}
+                cx={mousePosition.x}
+                cy={mousePosition.y}
                 r="30"
                 fill="Red"
                 stroke="black"
